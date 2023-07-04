@@ -8,7 +8,7 @@ const MainHeader = () => {
         <AppBar position="static">
             <Toolbar disableGutters>
                 <CssBaseline />
-                <Container sx={{ display: 'flex' }}>
+                <Box sx={{ display: 'flex', justifyContent:"space-between", width:"100%"}}>
                     <Box sx={{ mr: 5, flexGrow: 1 }}>
                         <Button color="inherit" href="/">
                             <Typography variant="h6" component="div">
@@ -16,7 +16,7 @@ const MainHeader = () => {
                             </Typography>
                         </Button>
                     </Box>
-                    <Box justifyContent={"flex-end"} sx={{display:"inline-flex"}}>
+                    <Box sx={{}}>
                         {
                             pages.map((page) => (
                                 <Button variant="text" disableGutters color="inherit" href={`/${page.url}`} key={page.id} sx={{ fontSize: 12 }}>
@@ -25,7 +25,7 @@ const MainHeader = () => {
                             ))
                         }
                     </Box>
-                </Container>
+                </Box>
             </Toolbar>
         </AppBar>
     );
