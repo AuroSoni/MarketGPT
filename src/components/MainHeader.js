@@ -5,7 +5,7 @@ import { pages } from "./consts";
 
 const MainHeader = () => {
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar disableGutters>
                 <CssBaseline />
                 <Box sx={{ display: 'flex', justifyContent:"space-between", width:"100%"}}>

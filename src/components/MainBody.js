@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {Route, Routes} from "react-router-dom";
 import {pages} from "./consts";
 import {conversations} from "./consts";
+import LaunchTeaser from "./LaunchTeaser";
 
 const MainBody = () => {
     return(
@@ -19,7 +20,7 @@ const MainBody = () => {
 
 const Home=()=>{
     return(
-        <div>Hi</div>
+        <LaunchTeaser></LaunchTeaser>
     );
 };
 
@@ -39,7 +40,7 @@ const Page = ({ page }) => {
 
     return(
         <div>
-            <Container maxWidth="xl" sx={{ marginTop: '2rem' }}>
+            <Container maxWidth="xl" sx={{ marginTop: '5rem' }}>
                 {data.map((item, index) => (
                     <Paper key={index} sx={{
                         padding: '1rem',
