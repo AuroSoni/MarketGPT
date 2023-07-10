@@ -25,22 +25,22 @@ export const pages=[
         sheet:"GrowthAnalysis",
         url:"growth-analysis"
     },
-    {
-        id:3,
-        name:"Brand Personalization",
-        sheet:"BrandPersonalization",
-        url:"brand-personalization"
-    },
+    // {
+    //     id:3,
+    //     name:"Brand Personalization",
+    //     sheet:"BrandPersonalization",
+    //     url:"brand-personalization"
+    // },
     {
         id:4,
         name:"Marketing Strategy",
         sheet:"MarketingStrategy",
         url:"marketing-strategy"
     },
-    {
-        id:5,
-        name:"Personalized Marketing",
-        sheet:"PersonalizedMarketing",
-        url:"personalized-marketing"
-    }
+    // {
+    //     id:5,
+    //     name:"Personalized Marketing",
+    //     sheet:"PersonalizedMarketing",
+    //     url:"personalized-marketing"
+    // }
 ];
