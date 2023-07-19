@@ -24,9 +24,24 @@ const Home=()=>{
     );
 };
 
+// const createMarkup = (text) => {
+//     //return {__html: text.replace(/\r\n|\n/g, '<br />')};
+//     return {__html: text};
+// }
+
 const createMarkup = (text) => {
-    //return {__html: text.replace(/\r\n|\n/g, '<br />')};
-    return {__html: text};
+    const publicUrl = process.env.PUBLIC_URL + '/assets/';
+    const doc = new DOMParser().parseFromString(text, 'text/html');
+    const images = doc.getElementsByTagName('img');
+    for (let i = 0; i < images.length; i++) {
+        let img = images[i];
+        let src = img.getAttribute('src');
+        img.setAttribute('src', publicUrl + src);
+        img.style.maxWidth = '100%';
+        img.style.height = 'auto';
+    }
+    let newHtml = new XMLSerializer().serializeToString(doc);
+    return {__html: newHtml};
 }
 
 const Page = ({ page }) => {
