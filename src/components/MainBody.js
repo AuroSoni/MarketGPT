@@ -25,7 +25,8 @@ const Home=()=>{
 };
 
 const createMarkup = (text) => {
-    return {__html: text.replace(/\r\n|\n/g, '<br />')};
+    //return {__html: text.replace(/\r\n|\n/g, '<br />')};
+    return {__html: text};
 }
 
 const Page = ({ page }) => {
