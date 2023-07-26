@@ -2,6 +2,7 @@ import {Container, Paper, Typography} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {Route, Routes} from "react-router-dom";
 import {pages} from "./consts";
+import Chat from "./chat";
 import LaunchTeaser from "./LaunchTeaser";
 
 const MainBody = () => {
@@ -13,6 +14,7 @@ const MainBody = () => {
                 <Route path={`/${page.url}`} element={<Page page={page}/>} key={page.id}/>
                 ))
             }
+            <Route path="/chat" element={<Chat/>}/>
         </Routes>
     );
 };
