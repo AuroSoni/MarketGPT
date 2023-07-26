@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { TextField, IconButton, Container, Paper, Typography, Box } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import CircularProgress from '@mui/material/CircularProgress';
-import ReactMarkdown from 'react-markdown';
 
 const Chat = () => {
     const [data, setData] = useState([]);
@@ -35,10 +34,6 @@ const Chat = () => {
         setLoading(false);
     }
 
-    function removeFirstAndLastChar(str) {
-        return str.substring(1, str.length - 1);
-    }
-
     return (
         <>
             <Container maxWidth="xl" sx={{ marginTop: '5rem' }}>
@@ -55,9 +50,7 @@ const Chat = () => {
                             borderRadius: '1rem'
                         }}>
                             <Typography variant="subtitle1" color="textSecondary">{item.type}</Typography>
-                            <Typography variant="body1">
-                            <ReactMarkdown>{item.text}</ReactMarkdown>
-                            </Typography>
+                            <Typography variant="body1" dangerouslySetInnerHTML={{__html: item.text}} />
                         </Paper>
                     ))}
                 </Box>
