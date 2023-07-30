@@ -19,7 +19,7 @@ const Chat = () => {
         ]);
         setText('');
 
-        const response = await fetch('https://proto2.fly.dev/chat/', {
+        const response = await fetch('https://proto2.fly.dev/chat/amazon_sales_basic/', {
             method: 'POST',
             body: formData,
         });
