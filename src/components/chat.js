@@ -18,21 +18,53 @@ const Chat = () => {
             { type: 'Prompt', text: text },
         ]);
         setText('');
-
-        const response = await fetch('https://proto2.fly.dev/chat/amazon_sales_basic/', {
-            method: 'POST',
-            body: formData,
-        });
-        const body = await response.json();
-        console.log(body);
-        // Update data state using the setData callback function
-        setData((prevData) => [
-            ...prevData,
-            { type: 'Response', text: body },
-        ]);
-
-        setLoading(false);
+    
+        try {
+            // Send the task
+            let response = await fetch('https://proto2.fly.dev/chat/amazon_sales_basic/', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            let body = await response.json();
+    
+            // Poll for the task result
+            let taskResult = null;
+            while (true) {
+                response = await fetch(`https://proto2.fly.dev/chat/task-status/${body.task_id}/`);
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+    
+                body = await response.json();
+                if (body.status === 'SUCCESS' || body.status === 'FAILURE') {
+                    taskResult = body.result;
+                    break;
+                }
+                // Optional: sleep for a bit before polling again to reduce server load
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            }
+    
+            // Update data state using the setData callback function
+            setData((prevData) => [
+                ...prevData,
+                { type: 'Response', text: taskResult },
+            ]);
+        } catch (error) {
+            setData((prevData) => [
+                ...prevData,
+                { type: 'Error', text: error.message },
+            ]);
+        } finally {
+            setLoading(false);
+        }
     }
+    
 
     return (
         <Grid container direction="column" style={{height: "100vh", alignItems:"center"}}>
