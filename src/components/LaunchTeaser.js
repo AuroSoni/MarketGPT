@@ -29,7 +29,8 @@ const LaunchTeaser = () => {
                         Alpha Launch Countdown
                     </Typography>
                     <Box display="flex" justifyContent="center">
-                        <Countdown date={launchDate} renderer={renderer} />
+                        {/* <Countdown date={launchDate} renderer={renderer} /> */}
+                        <Typography variant="h1">Coming Soon!</Typography>
                     </Box>
                 </Grid>
                 <Grid item xs={12}>

@@ -36,14 +36,16 @@ const Chat = () => {
             let taskResult = null;
             while (true) {
                 response = await fetch(`https://proto2.fly.dev/chat/task-status/${body.task_id}/`);
-    
+                console.log(response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
     
                 body = await response.json();
+                console.log(body.status);
                 if (body.status === 'SUCCESS' || body.status === 'FAILURE') {
                     taskResult = body.result;
+                    console.log(body.status);
                     break;
                 }
                 // Optional: sleep for a bit before polling again to reduce server load
@@ -56,6 +58,7 @@ const Chat = () => {
                 { type: 'Response', text: taskResult },
             ]);
         } catch (error) {
+            console.error(error);
             setData((prevData) => [
                 ...prevData,
                 { type: 'Error', text: error.message },
