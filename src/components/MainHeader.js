@@ -10,9 +10,14 @@ const MainHeader = () => {
                 <Box sx={{ display: 'flex', justifyContent: "space-between", width: "100%" }}>
                     <Box sx={{ mr: 5, flexGrow: 1 }}>
                         <Button color="inherit" href="/">
-                            <Typography variant="h6" component="div">
-                                MarketGPT
-                            </Typography>
+                            <Box sx={{ mr: 5, flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                <Typography variant="h5" component="div">
+                                    Hyperlocology
+                                </Typography>
+                                <Typography variant="subtitle2" component="div" sx={{ fontFamily: 'cursive' }}>
+                                    Powered by MarketGPT
+                                </Typography>
+                            </Box>
                         </Button>
                     </Box>
                     <Box sx={{
